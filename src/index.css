@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-bg-dark: #090d16;
+    --color-panel-dark: #111827;
+    --color-border: #1f293d;
+    --font-code: 'Fira Code', monospace;
+    --font-retro: 'Press Start 2P', monospace;
+    --font-sans: 'Outfit', sans-serif;
+  }
+
+  body {
+    background-color: #050811;
+    color: #f3f4f6;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0f19;
+}
+::-webkit-scrollbar-thumb {
+  background: #1f293d;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #374151;
+}
+
+/* Animations */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 15px rgba(16, 185, 129, 0.2); }
+  50% { box-shadow: 0 0 30px rgba(16, 185, 129, 0.4); }
+}
+
+.glow-emerald {
+  animation: pulseGlow 3s infinite ease-in-out;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* CRT Scanline Effect */
+.scanline {
+  position: relative;
+}
+.scanline::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+  background-size: 100% 4px;
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+/* Terminal Theme CSS Classes */
+.theme-matrix {
+  background-color: #050c05 !important;
+  color: #10b981 !important;
+  border-color: #065f46 !important;
+}
+.theme-amber {
+  background-color: #0f0a00 !important;
+  color: #f59e0b !important;
+  border-color: #78350f !important;
+}
+.theme-cyberpunk {
+  background-color: #0d0614 !important;
+  color: #ec4899 !important;
+  border-color: #831843 !important;
+}
+.theme-dracula {
+  background-color: #1a1b26 !important;
+  color: #7aa2f7 !important;
+  border-color: #3b4261 !important;
+}
+.theme-classic {
+  background-color: #09090b !important;
+  color: #f4f4f5 !important;
+  border-color: #27272a !important;
+}
+
+/* Custom Glassmorphism */
+.glass-panel {
+  background: rgba(17, 24, 39, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}

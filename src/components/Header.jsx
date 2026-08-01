@@ -9,6 +9,7 @@ export default function Header({
   soundEnabled,
   onToggleSound,
   onOpenStartGame,
+  onOpenConcepts,
   onOpenBadges,
   onOpenShop,
   onOpenTeacher,
@@ -87,11 +88,20 @@ export default function Header({
           </button>
 
           <button
+            onClick={() => { soundFx.playClick(); onOpenConcepts(); }}
+            className="flex items-center space-x-1.5 bg-indigo-950/80 hover:bg-indigo-900 text-indigo-200 text-xs font-semibold px-3 py-1.5 rounded-xl transition-all border border-indigo-700/80 active:scale-95"
+            title="Aprende qué es Ruta, Directorio y Consola"
+          >
+            <BookOpen className="w-4 h-4 text-indigo-400" />
+            <span className="hidden sm:inline">Conceptos Clave</span>
+          </button>
+
+          <button
             onClick={() => { soundFx.playClick(); onOpenCheatSheet(); }}
             className="flex items-center space-x-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold px-3 py-1.5 rounded-xl transition-all border border-slate-700 active:scale-95"
             title="Manual de Comandos del Sistema"
           >
-            <BookOpen className="w-4 h-4 text-cyan-400" />
+            <Terminal className="w-4 h-4 text-cyan-400" />
             <span className="hidden md:inline">Comandos</span>
           </button>
 

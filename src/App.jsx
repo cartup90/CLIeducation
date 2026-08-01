@@ -10,6 +10,7 @@ import ShopModal from './components/ShopModal';
 import TeacherDashboardModal from './components/TeacherDashboardModal';
 import VictoryModal from './components/VictoryModal';
 import StartGameModal from './components/StartGameModal';
+import ConceptsModal from './components/ConceptsModal';
 
 import { WORLDS } from './data/missions';
 import { BADGES } from './data/badges';
@@ -72,6 +73,7 @@ export default function App() {
     const savedMissions = localStorage.getItem(`${STORAGE_KEY}_completed_missions`);
     return !savedMissions;
   });
+  const [isConceptsOpen, setIsConceptsOpen] = useState(false);
   const [isCheatSheetOpen, setIsCheatSheetOpen] = useState(false);
   const [isBadgesOpen, setIsBadgesOpen] = useState(false);
   const [isShopOpen, setIsShopOpen] = useState(false);
@@ -328,6 +330,7 @@ export default function App() {
         soundEnabled={soundEnabled}
         onToggleSound={() => setSoundEnabled(soundFx.toggleSound())}
         onOpenStartGame={() => setIsStartGameOpen(true)}
+        onOpenConcepts={() => setIsConceptsOpen(true)}
         onOpenBadges={() => setIsBadgesOpen(true)}
         onOpenShop={() => setIsShopOpen(true)}
         onOpenTeacher={() => setIsTeacherOpen(true)}
@@ -367,6 +370,7 @@ export default function App() {
               mission={currentMission}
               hintsUsedCount={hintsUsedCount}
               onUseHint={() => setHintsUsedCount(prev => prev + 1)}
+              onOpenConcepts={() => setIsConceptsOpen(true)}
               mascotAvatar={activeAvatarObj.icon}
               selectedOS={selectedOS}
             />
@@ -396,6 +400,11 @@ export default function App() {
       </main>
 
       {/* Modals */}
+      <ConceptsModal
+        isOpen={isConceptsOpen}
+        onClose={() => setIsConceptsOpen(false)}
+      />
+
       <StartGameModal
         isOpen={isStartGameOpen}
         onClose={() => setIsStartGameOpen(false)}

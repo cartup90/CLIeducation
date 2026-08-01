@@ -57,16 +57,23 @@ export default function FileTreeViewer({ fs, currentPath }) {
     <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 backdrop-blur-md shadow-xl flex flex-col h-full min-h-[300px]">
       
       {/* Header */}
-      <div className="flex items-center justify-between border-b border-slate-800 pb-3 mb-3">
-        <div className="flex items-center space-x-2">
-          <HardDrive className="w-4 h-4 text-emerald-400" />
-          <h3 className="font-bold text-xs uppercase tracking-wider text-slate-200">
-            Explorador de Archivos (En Vivo)
-          </h3>
+      <div className="flex flex-col space-y-2 border-b border-slate-800 pb-3 mb-3">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-2">
+            <HardDrive className="w-4 h-4 text-emerald-400" />
+            <h3 className="font-bold text-xs uppercase tracking-wider text-slate-200">
+              Explorador de Archivos (En Vivo)
+            </h3>
+          </div>
+          <div className="flex items-center space-x-1 text-[11px] text-slate-400 bg-slate-950 border border-slate-800 px-2 py-0.5 rounded-md" title="Esta es la Ruta (Path) de tu ubicación actual">
+            <MapPin className="w-3 h-3 text-emerald-400" />
+            <span className="font-mono text-emerald-300 font-semibold">{currentPath}</span>
+          </div>
         </div>
-        <div className="flex items-center space-x-1 text-[11px] text-slate-400 bg-slate-950 border border-slate-800 px-2 py-0.5 rounded-md">
-          <MapPin className="w-3 h-3 text-emerald-400" />
-          <span className="font-mono text-emerald-300 font-semibold">{currentPath}</span>
+
+        <div className="text-[10px] text-slate-400 bg-slate-950/60 p-1.5 rounded border border-slate-800/60 flex items-center justify-between">
+          <span>📍 <strong>Ruta (Path):</strong> Dirección exacta donde estás parado.</span>
+          <span className="text-slate-500 font-mono">Ubicación actual</span>
         </div>
       </div>
 

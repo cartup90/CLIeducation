@@ -8,6 +8,7 @@ export default function MascotGuide({
   mission,
   hintsUsedCount,
   onUseHint,
+  onOpenConcepts,
   mascotAvatar = '🦉',
   selectedOS = 'linux'
 }) {
@@ -70,9 +71,14 @@ export default function MascotGuide({
             <BookOpen className="w-4 h-4 text-indigo-400" />
             <span>Guía de Comandos Básicos ({activeOSObj.name})</span>
           </div>
-          <span className="text-[10px] text-indigo-400 bg-indigo-950/80 px-2 py-0.5 rounded border border-indigo-800/50 font-medium">
-            Primeros Pasos
-          </span>
+          {onOpenConcepts && (
+            <button
+              onClick={() => { soundFx.playClick(); onOpenConcepts(); }}
+              className="text-[10px] text-indigo-300 hover:text-white bg-indigo-950/80 hover:bg-indigo-900 px-2 py-0.5 rounded border border-indigo-700/60 font-semibold transition-all active:scale-95"
+            >
+              📖 ¿Qué es Ruta o Directorio?
+            </button>
+          )}
         </div>
 
         <div className="grid grid-cols-2 gap-2 text-[11px] font-sans">

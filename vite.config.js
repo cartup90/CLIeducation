@@ -3,9 +3,8 @@ import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  // Base path matches the GitHub repository name for Pages deployment
-  // For local dev this is overridden by the dev server
-  base: process.env.NODE_ENV === 'production' ? '/CLI-Teacher/' : '/',
+  // Relative base path ensures GitHub Pages assets load correctly regardless of repository name
+  base: './',
   plugins: [react(), tailwindcss()],
   server: {
     port: 3000,

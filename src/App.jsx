@@ -246,8 +246,10 @@ export default function App() {
     }
     // 12. CLEAR / CLS / limpiar
     else if (mainCmd === 'clear' || mainCmd === 'cls' || mainCmd === 'limpiar') {
-      setCommandHistory([]);
-      return;
+      result = {
+        success: true,
+        output: 'Consola limpiada.'
+      };
     }
     else {
       result = {
@@ -270,7 +272,11 @@ export default function App() {
     };
 
     const finalHistory = [...updatedHistory, outputEntry];
-    setCommandHistory(finalHistory);
+    if (mainCmd === 'clear' || mainCmd === 'cls' || mainCmd === 'limpiar') {
+      setCommandHistory([]);
+    } else {
+      setCommandHistory(finalHistory);
+    }
 
     // Validate mission completion
     if (currentMission && currentMission.validation) {

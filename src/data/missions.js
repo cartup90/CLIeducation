@@ -7,51 +7,51 @@ export const getMissionNarrative = (mission, osId = 'linux') => {
   switch (mission.id) {
     case 'm1-1':
       return {
-        story: '¡Hola! Soy Byte, tu guía de la consola. Te han teletransportado a la Isla CLI. Antes de moverte, debes averiguar la ruta de tu ubicación actual.',
+        story: `¡Bienvenido a la línea de comandos! Soy Byte, tu guía. Usar una consola es muy sencillo: no necesitas memorizar todo. El primer paso fundamental es saber dónde estás parado en el sistema de archivos.`,
         objective: isWindows 
-          ? 'Escribe el comando `cd` (o `pwd`) en la consola para saber la carpeta actual.'
-          : 'Escribe el comando `pwd` en la terminal para mostrar tu ruta actual.',
+          ? 'En Windows CMD, el comando para ver tu ubicación actual es `cd`. ¡Escríbelo en la consola y presiona Enter!'
+          : 'En Linux/macOS, el comando es `pwd` (que significa "Print Working Directory" o Imprimir Directorio Actual). ¡Escribe `pwd` y presiona Enter!',
         hints: isWindows ? [
-          'En la consola de Windows, escribir solo "cd" muestra tu carpeta actual.',
-          'También funciona "pwd" como comando estándar.',
-          'Solución: Escribe "cd" o "pwd"'
+          'En la consola de Windows (CMD), escribir solo "cd" te indica en qué carpeta estás actualmente.',
+          'Recuerda: Si en cualquier momento te olvidas de los comandos, escribe "help".',
+          'Solución: Escribe "cd" en la consola'
         ] : [
-          'Escribe el comando exacto "pwd" (Print Working Directory).',
-          'Presiona la tecla Enter al finalizar.',
-          'Solución: Escribe "pwd"'
+          'El comando "pwd" muestra la ruta de la carpeta donde estás trabajando.',
+          'Recuerda: Si en cualquier momento te olvidas de los comandos, escribe "help".',
+          'Solución: Escribe "pwd" en la consola'
         ]
       };
 
     case 'm1-2':
       return {
-        story: 'Estás en el centro de la plaza. Para saber qué objetos y carpetas te rodean, debemos listar el contenido.',
+        story: '¡Fantástico! Ya sabes en qué carpeta te encuentras. El segundo comando esencial te permite inspeccionar qué elementos (archivos o carpetas) hay adentro de tu ubicación actual.',
         objective: isWindows
-          ? 'Utiliza el comando `dir` (o `ls`) para ver la lista de archivos de la carpeta.'
-          : 'Utiliza el comando `ls` (List) para ver todo el contenido de la carpeta actual.',
+          ? 'En Windows, usa el comando `dir` (Directory) para listar todos los archivos y carpetas a tu alrededor.'
+          : 'En Linux y macOS, usa el comando `ls` (List) para ver todo el contenido de la carpeta actual.',
         hints: isWindows ? [
-          'En Windows CMD el comando para listar es "dir".',
-          'En Linux/macOS se usa "ls". Ambos funcionan.',
-          'Solución: Escribe "dir" o "ls"'
+          'El comando "dir" muestra la lista completa de carpetas y archivos en Windows.',
+          'Si quieres ver todos los comandos disponibles en cualquier momento, escribe "help".',
+          'Solución: Escribe "dir"'
         ] : [
-          'El comando en Linux/macOS es "ls".',
-          'Escribe "ls" en la terminal.',
+          'El comando "ls" viene de "List" (Listar en inglés).',
+          'Si quieres ver todos los comandos disponibles en cualquier momento, escribe "help".',
           'Solución: Escribe "ls"'
         ]
       };
 
     case 'm1-3':
       return {
-        story: 'La pantalla de la consola se está llenando de texto. Un verdadero hacker siempre mantiene limpia su terminal.',
+        story: 'A medida que vas ejecutando órdenes, la pantalla se va llenando de texto. El tercer comando básico te permite limpiar la pantalla para tener espacio libre de trabajo.',
         objective: isWindows
-          ? 'Usa el comando `cls` (o `clear`) para limpiar la pantalla.'
-          : 'Usa el comando `clear` (o `cls`) para vaciar la pantalla.',
+          ? 'En Windows, usa el comando `cls` (Clear Screen) para borrar todo el texto y limpiar la pantalla.'
+          : 'En Linux/macOS, usa el comando `clear` para limpiar la terminal.',
         hints: isWindows ? [
-          'En Windows se usa "cls" (Clear Screen).',
-          'También puedes usar "clear".',
+          'En Windows CMD el comando de limpieza es "cls".',
+          'También puedes presionar el botón "Limpiar" o escribir "help" para ver la lista de utilidades.',
           'Solución: Escribe "cls"'
         ] : [
-          'El comando es "clear".',
-          'También se acepta "cls".',
+          'El comando de limpieza en Linux/macOS es "clear".',
+          'También puedes presionar el botón "Limpiar" o escribir "help" para ver la lista de utilidades.',
           'Solución: Escribe "clear"'
         ]
       };

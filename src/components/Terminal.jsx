@@ -161,10 +161,16 @@ export default function Terminal({
       <div className="flex-1 p-4 overflow-y-auto space-y-2 relative scanline">
         
         {/* Welcome Header in Terminal */}
-        <div className="opacity-60 text-xs border-b border-white/10 pb-2 mb-3">
-          CLI Teacher Simulator — Modo {activeOSObj.name} [{activeOSObj.shellName}]
-          <br />
-          Escribe <span className="font-bold underline">help</span> para ver comandos. Usa <span className="font-bold underline">TAB</span> para autocompletar.
+        <div className="bg-white/5 border border-white/10 rounded-lg p-2.5 mb-3 text-xs space-y-1">
+          <div className="flex items-center justify-between text-emerald-400 font-bold">
+            <span>💻 Consola Simula: Modo {activeOSObj.name}</span>
+            <span className="text-[10px] text-white/50 bg-white/10 px-1.5 py-0.5 rounded font-mono">
+              Escribe "help" si te trabas
+            </span>
+          </div>
+          <p className="text-white/70 text-[11px]">
+            💡 <strong className="text-white">Recordatorio de aprendizaje:</strong> Si no sabes qué comando usar, escribe <code className="text-emerald-300 font-bold underline">help</code> y presiona Enter para ver la lista completa.
+          </p>
         </div>
 
         {/* History Log */}

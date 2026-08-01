@@ -9,6 +9,7 @@ import BadgeModal from './components/BadgeModal';
 import ShopModal from './components/ShopModal';
 import TeacherDashboardModal from './components/TeacherDashboardModal';
 import VictoryModal from './components/VictoryModal';
+import StartGameModal from './components/StartGameModal';
 
 import { WORLDS } from './data/missions';
 import { BADGES } from './data/badges';
@@ -66,6 +67,11 @@ export default function App() {
   const [soundEnabled, setSoundEnabled] = useState(true);
 
   // Modals visibility state
+  const [isStartGameOpen, setIsStartGameOpen] = useState(() => {
+    // Show start game modal automatically on first visit if no completed missions
+    const savedMissions = localStorage.getItem(`${STORAGE_KEY}_completed_missions`);
+    return !savedMissions;
+  });
   const [isCheatSheetOpen, setIsCheatSheetOpen] = useState(false);
   const [isBadgesOpen, setIsBadgesOpen] = useState(false);
   const [isShopOpen, setIsShopOpen] = useState(false);
@@ -321,6 +327,7 @@ export default function App() {
         level={level}
         soundEnabled={soundEnabled}
         onToggleSound={() => setSoundEnabled(soundFx.toggleSound())}
+        onOpenStartGame={() => setIsStartGameOpen(true)}
         onOpenBadges={() => setIsBadgesOpen(true)}
         onOpenShop={() => setIsShopOpen(true)}
         onOpenTeacher={() => setIsTeacherOpen(true)}
@@ -389,6 +396,21 @@ export default function App() {
       </main>
 
       {/* Modals */}
+      <StartGameModal
+        isOpen={isStartGameOpen}
+        onClose={() => setIsStartGameOpen(false)}
+        currentWorldId={activeWorldId}
+        currentOSId={selectedOS}
+        onStartGame={({ worldId, osId }) => {
+          setSelectedOS(osId);
+          setActiveWorldId(worldId);
+          const targetWorld = WORLDS.find(w => w.id === worldId);
+          if (targetWorld && targetWorld.missions.length > 0) {
+            setActiveMissionId(targetWorld.missions[0].id);
+          }
+        }}
+      />
+
       <CommandCheatSheet
         isOpen={isCheatSheetOpen}
         onClose={() => setIsCheatSheetOpen(false)}

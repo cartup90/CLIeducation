@@ -8,6 +8,7 @@ export default function Header({
   level,
   soundEnabled,
   onToggleSound,
+  onOpenStartGame,
   onOpenBadges,
   onOpenShop,
   onOpenTeacher,
@@ -76,6 +77,15 @@ export default function Header({
           </div>
 
           {/* Cheat Sheet / Ayuda Rápida Button */}
+          <button
+            onClick={() => { soundFx.playClick(); onOpenStartGame(); }}
+            className="flex items-center space-x-1.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-slate-950 font-bold text-xs px-3 py-1.5 rounded-xl transition-all shadow-md active:scale-95"
+            title="Elegir Mundo y Sistema Operativo"
+          >
+            <Sparkles className="w-4 h-4 text-slate-950 fill-slate-950" />
+            <span className="hidden sm:inline">Elegir Mundo y S.O.</span>
+          </button>
+
           <button
             onClick={() => { soundFx.playClick(); onOpenCheatSheet(); }}
             className="flex items-center space-x-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold px-3 py-1.5 rounded-xl transition-all border border-slate-700 active:scale-95"
